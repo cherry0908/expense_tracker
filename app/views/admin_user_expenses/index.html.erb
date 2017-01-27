@@ -1,0 +1,28 @@
+
+<table>
+  <tr>
+    <h1>Expense</h1>
+    <p>Admin User: <%= current_admin_user.email %></p>
+    <p>Number of Records: <%= current_admin_user.admin_user_expenses.count %></p>
+  </tr>
+ 
+  <% @admin_user_expenses.each do |admin_user_expense| %>
+    <tr>
+      <td><%= admin_user_expense.description %></td>
+      <td><%= number_to_currency(admin_user_expense.amount) %></td>
+      <td><%= admin_user_expense.created_at.strftime("%m/%d/%y %H:%M") %></td>
+      <td><%= button_to 'Edit', edit_expense_path(admin_user_expense), :method => :get %></td>
+	  <td><%= button_to 'Delete', expense_path(admin_user_expense), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+	
+  <% end %>
+</table>
+<br/>
+
+<%= link_to new_admin_user_expense_path do %>
+  <i></i> New Expense
+<% end %>
+<br/>
+<br/>
+
+<%= link_to 'Homepage', controller: 'welcome' %>

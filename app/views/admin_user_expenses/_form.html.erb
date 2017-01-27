@@ -1,0 +1,16 @@
+<%= form_for(@admin_user_expense, remote: true) do |f| %>
+
+  <div>
+    <%= f.text_field :description, label: false, placeholder: "Description" %>
+  </div>
+  <div>
+    <%= f.text_field :amount, label: false, placeholder: "Amount" %>
+  </div>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>
+

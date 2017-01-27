@@ -1,0 +1,79 @@
+<table>
+  <tr>
+    <h1>Expense</h1>
+    <p>Admin User: <%= current_admin_user.email %></p>
+    <p>Number of Records: <%= current_admin_user.admin_user_expenses.count %></p>
+  </tr>
+
+  <p>Number of Records per day: </p>
+  <p>Total Amount Spent Per Week: </p>
+
+</table>
+<br/>
+
+<p>Expense Records:</p>
+<%= render "admin_expense_detail" %>
+
+<%= form_tag admin_user_reports_path(), method: :get do |f| %>
+
+	<p>Select date range:</p>
+	<%= date_select("start_date" , "all_dates", :start_year => 2010, :end_year => 2017, :order => [:month, :day, :year], :use_short_month => true ) %>
+  <span>to</span>
+  <%= date_select("end_date" , "all_dates", :start_year => 2010, :end_year => 2017, :order => [:month, :day, :year], :use_short_month => true ) %>
+  
+  <%= link_to admin_user_reports_path(), id: 'admin_search_date_submit' do %>
+    <button type="button">SEARCH</button>
+  <% end %>
+
+<% end %>
+<br/>
+<br/>
+<br/>
+
+<%= link_to 'Homepage', controller: 'welcome' %>
+
+<script>
+$(document).ready(function() {
+	$('#admin_search_date_submit').on('click', function(event) {
+    event.preventDefault();
+    var start_date = []; 
+    var end_date = []; 
+
+    start_date.push($('#start_date_all_dates_1i').find(":selected").val());
+    start_date.push($('#start_date_all_dates_2i').find(":selected").val());
+    start_date.push($('#start_date_all_dates_3i').find(":selected").val());
+
+    end_date.push($('#end_date_all_dates_1i').find(":selected").val());
+    end_date.push($('#end_date_all_dates_2i').find(":selected").val());
+    end_date.push($('#end_date_all_dates_3i').find(":selected").val());
+
+    console.log("start_date: ");
+    console.log(start_date);
+    console.log("end_date: ");
+    console.log(end_date);
+    
+    $.ajax({
+      url: '/admin_user_reports',
+      type: 'GET',
+      dataType: 'script',
+      data: {
+        filter_by:{
+          start_date: start_date, 
+          end_date: end_date
+        } 
+      }
+    })
+    .done(function() {
+      console.log("success");
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+
+  });
+
+});
+</script>

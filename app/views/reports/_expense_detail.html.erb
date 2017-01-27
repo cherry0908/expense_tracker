@@ -1,0 +1,11 @@
+<div id="expense_list">
+<% @expenses.each do |expense| %>
+<table>
+  <tr>
+    <td><%= expense.description %></td>
+    <td><%= number_to_currency(expense.amount) %></td>
+    <td><%= expense.created_at.strftime("%m/%d/%y %H:%M") %></td>
+  </tr>
+</table>
+<% end %>
+</div>

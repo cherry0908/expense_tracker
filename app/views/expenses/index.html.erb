@@ -1,0 +1,36 @@
+
+<!-- <div>
+  <%# @expenses.each do |expense| %>
+    <%#= render expenses %>
+    <%# end %>
+ </div>
+<br> -->
+
+
+<table>
+  <tr>
+    <h1>Expense</h1>
+    <p>User: <%= current_user.email %></p>
+    <p>Number of Records: <%= current_user.expenses.count %></p>
+  </tr>
+ 
+  <% @expenses.each do |expense| %>
+    <tr>
+      <td><%= expense.description %></td>
+      <td><%= number_to_currency(expense.amount) %></td>
+      <td><%= expense.created_at.strftime("%m/%d/%y %H:%M") %></td>
+      <td><%= button_to 'Edit', edit_expense_path(expense), :method => :get %></td>
+	  <td><%= button_to 'Delete', expense_path(expense), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+	
+  <% end %>
+</table>
+<br/>
+
+<%= link_to new_expense_path do %>
+  <i></i> New Expense
+<% end %>
+<br/>
+<br/>
+
+<%= link_to 'Homepage', controller: 'welcome' %>

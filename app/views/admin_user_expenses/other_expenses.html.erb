@@ -1,0 +1,18 @@
+<% User.all.each do |user| %>
+  <p>User Account: <%= user.email %> </p>
+  <p>Expenses: </p>
+  <table>
+    <% user.expenses.each do |expense| %>
+      <tr>
+        <td><%= expense.description %></td>
+        <td><%= number_to_currency(expense.amount) %></td>
+        <td><%= expense.created_at.strftime("%m/%d/%y %H:%M") %></td>
+      </tr>
+    <% end %>
+  </table>
+  <br/>
+<% end %>
+
+<br/>
+
+<%= link_to 'Homepage', controller: 'welcome' %>

@@ -1,0 +1,2 @@
+module AdminUserReportsHelper
+end
