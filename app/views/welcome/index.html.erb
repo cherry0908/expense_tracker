@@ -1,16 +1,16 @@
-<% if user_signed_in? %>
-	<h1>Hello, Regular User!</h1>
-	<%= link_to 'Go to expenses', expenses_path %></li></br>
-	<%= link_to 'Go to report', reports_path %></li></br>
-	<%= link_to 'Log Out', destroy_user_session_path, method: :delete, :class => "sign_out_link" %></li>
-<% elsif admin_user_signed_in? %>
-	<h1>Hello, Admin User!</h1>
-	<%= link_to 'Go to expenses', admin_user_expenses_path %></li></br>
-	<%= link_to 'Go to report', admin_user_reports_path %></li></br>
-	<%= link_to 'Check expenses of other users', other_expenses_path %></li></br>
-	<%= link_to 'Log Out', destroy_admin_user_session_path, method: :delete, :class => "sign_out_link" %></li>
- <% else %>
- 	<h1>Welcome!</h1>
- 	<%= link_to "Regular User Log in", new_user_session_url %></li></br>
- 	<%= link_to "Admin User Log in", new_admin_user_session_url %></li>
-<% end %>
+<div style="margin-left: 10px;">
+	<h1>Welcome to ExpenseTracker!</h1></br>
+	<% if user_signed_in? %>
+		<%= link_to 'Go to expenses', expenses_path %></br>
+		<%= link_to 'Go to report', reports_path %></br>
+		<%= link_to 'Log Out', destroy_user_session_path, method: :delete, :class => "sign_out_link" %>
+	<% elsif admin_user_signed_in? %>
+		<%= link_to 'Go to expenses', admin_user_expenses_path %></br>
+		<%= link_to 'Go to report', admin_user_reports_path %></br>
+		<%= link_to 'Check expenses of other users', other_expenses_path %></br>
+		<%= link_to 'Log Out', destroy_admin_user_session_path, method: :delete, :class => "sign_out_link" %>
+	 <% else %>
+	 	<%= link_to "Regular User Log in", new_user_session_url %></br></br>
+	 	<%= link_to "Admin User Log in", new_admin_user_session_url %>
+	<% end %>
+</div>

@@ -1,17 +1,25 @@
-<% User.all.each do |user| %>
-  <p>User Account: <%= user.email %> </p>
-  <p>Expense Records: </p>
-  <table>
-    <% user.expenses.each do |expense| %>
-      <tr>
-        <td><%= expense.description %></td>
-        <td><%= number_to_currency(expense.amount) %></td>
-        <td><%= expense.created_at.strftime("%m/%d/%y %H:%M") %></td>
-      </tr>
-    <% end %>
-  </table>
-  <br/>
-<% end %>
-<br/>
+<div style="margin-left: 10px;">
+  <h3>Other Users' Expense Records:</h3>
 
-<%= link_to 'Homepage', controller: 'welcome' %>
+  <% User.all.each do |user| %>
+    <h4>User Account: </h4> 
+    <p><%= user.email %> </p>
+    <h4>Expense Records: </h4>
+
+    <table>
+      <% user.expenses.each do |expense| %>
+        <tr>
+          <td><%= expense.description %></td>
+          <td><%= number_to_currency(expense.amount) %></td>
+          <td><%= expense.created_at.strftime("%m/%d/%y %H:%M") %></td>
+        </tr>
+      <% end %>
+    </table>
+    
+    <br/>
+  <% end %>
+  <br/>
+
+  <%= link_to 'Homepage', controller: 'welcome' %>
+
+</div>

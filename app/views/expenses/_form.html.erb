@@ -1,16 +1,15 @@
 <%= form_for(@expense, remote: true) do |f| %>
-
   <div>
     <%= f.text_field :description, label: false, placeholder: "Description" %>
-  </div>
+  </div><br/>
+
   <div>
     <%= f.text_field :amount, label: false, placeholder: "Amount" %>
-  </div>
-  </div>
+  </div><br/>
 
   <div>
     <%= f.submit %>
   </div>
-
+  
 <% end %>
 

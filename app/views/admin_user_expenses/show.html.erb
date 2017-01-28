@@ -1,19 +1,22 @@
-<h1>Expense Details</h1>
+<div style="margin-left: 10px;">
+	<h1>Expense Details</h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @admin_user_expense.description %>
-</p>
+	<p>
+	  <strong>Description:</strong>
+	  <%= @admin_user_expense.description %>
+	</p>
 
-<p>
-  <strong>Amount:</strong>
-  <%= number_to_currency(@admin_user_expense.amount) %>
-</p>
- 
-<p>
-  <strong>Datetime:</strong>
-  <%= @admin_user_expense.created_at %>
-</p>
+	<p>
+	  <strong>Amount:</strong>
+	  <%= number_to_currency(@admin_user_expense.amount) %>
+	</p>
 
-<%= link_to 'Edit', edit_admin_user_expense_path(@admin_user_expense) %> |
-<%= link_to 'Back', admin_user_expenses_path %>
+	<p>
+	  <strong>Datetime:</strong>
+	  <%= @admin_user_expense.created_at %>
+	</p>
+
+	<%= link_to 'Edit', edit_admin_user_expense_path(@admin_user_expense) %> |
+	<%= link_to 'Back', admin_user_expenses_path %>
+	
+</div>

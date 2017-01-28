@@ -1,40 +1,43 @@
-<table>
-  <tr>
-    <h1>Expense</h1>
-    <p>User: <%= current_user.email %></p>
-  </tr>
-
-  <p>Total Amount Spent Per Week: </p>
-  <% @day_report.each do |key, value| %>
+<div style="margin-left: 10px;">
+  <table>
     <tr>
-      <td><%= key.strftime("%m/%d/%y") %> to <%= (key + 7.days).strftime("%m/%d/%y") %></td>
-      <td><%= number_to_currency(value) %></td>
+      <h1>Expense Report</h1>
+      <h4>User:</h4> 
+      <p><%= current_user.email %></p>
     </tr>
+
+    <h4>Total Amount Spent Per Week: </h4>
+    <% @day_report.each do |key, value| %>
+      <tr>
+        <td><%= key.strftime("%m/%d/%y") %> to <%= (key + 7.days).strftime("%m/%d/%y") %></td>
+        <td><%= number_to_currency(value) %></td>
+      </tr>
+    <% end %>
+
+  </table>
+  <br/>
+
+  <h3>Expense Records:</h3>
+  <%= render "expense_detail" %>
+  <br/>
+
+  <%= form_tag reports_path(), method: :get do |f| %>
+
+  	<h4>Select date range:</h4>
+  	<%= date_select("start_date" , "all_dates", :start_year => 2010, :end_year => 2017, :order => [:month, :day, :year], :use_short_month => true ) %>
+    <span>to</span>
+    <%= date_select("end_date" , "all_dates", :start_year => 2010, :end_year => 2017, :order => [:month, :day, :year], :use_short_month => true ) %>
+    
+    <%= link_to reports_path(), id: 'search_date_submit' do %>
+      <button type="button">SEARCH</button>
+    <% end %>
+
   <% end %>
-  
-</table>
-<br/>
+  <br/>
 
-<p>Expense Records:</p>
-<%= render "expense_detail" %>
+  <%= link_to 'Homepage', controller: 'welcome' %>
 
-<%= form_tag reports_path(), method: :get do |f| %>
-
-	<p>Select date range:</p>
-	<%= date_select("start_date" , "all_dates", :start_year => 2010, :end_year => 2017, :order => [:month, :day, :year], :use_short_month => true ) %>
-  <span>to</span>
-  <%= date_select("end_date" , "all_dates", :start_year => 2010, :end_year => 2017, :order => [:month, :day, :year], :use_short_month => true ) %>
-  
-  <%= link_to reports_path(), id: 'search_date_submit' do %>
-    <button type="button">SEARCH</button>
-  <% end %>
-
-<% end %>
-<br/>
-<br/>
-<br/>
-
-<%= link_to 'Homepage', controller: 'welcome' %>
+</div>
 
 <script>
 $(document).ready(function() {
