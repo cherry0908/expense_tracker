@@ -4,9 +4,9 @@ This web application is deployed to Heroku.
 
 Here's the link for master production: https://protected-caverns-37888.herokuapp.com
 
-After launching the web application, user will see the main page with two link for regular user and admin user. 
-
 There are two types of users in this application, regular user and amdin user.
+
+After launching the web application, user will see the main page with two link for regular user and admin user. 
 
 Here's the use cases for this application.
 
