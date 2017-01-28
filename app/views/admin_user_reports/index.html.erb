@@ -2,11 +2,15 @@
   <tr>
     <h1>Expense</h1>
     <p>Admin User: <%= current_admin_user.email %></p>
-    <p>Number of Records: <%= current_admin_user.admin_user_expenses.count %></p>
   </tr>
 
-  <p>Number of Records per day: </p>
   <p>Total Amount Spent Per Week: </p>
+  <% @admin_user_day_report.each do |key, value| %>
+    <tr>
+      <td><%= key.strftime("%m/%d/%y") %> to <%= (key + 7.days).strftime("%m/%d/%y") %></td>
+      <td><%= number_to_currency(value) %></td>
+    </tr>
+  <% end %>
 
 </table>
 <br/>

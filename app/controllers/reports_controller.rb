@@ -1,8 +1,7 @@
 class ReportsController < ApplicationController
   def index
-  	@expenses = current_user.expenses.where(nil)
-  	Rails.logger.debug @expenses.count
-  	# current_user.expenses.group("DATE_TRUNC('day', created_at)").count
+  	@expenses = current_user.expenses.where(nil).order('created_at asc')
+  	@day_report = current_user.expenses.group("DATE_TRUNC('week', created_at)").sum(:amount)
 
 		if params[:filter_by].present?
 			if params[:filter_by][:start_date].present? && params[:filter_by][:end_date].present?
@@ -13,7 +12,6 @@ class ReportsController < ApplicationController
 				@expenses = current_user.expenses.where("created_at between (?) and (?)", start_date.to_time, end_date.to_time)
 			end
 		end
-
-
+		
   end
 end
