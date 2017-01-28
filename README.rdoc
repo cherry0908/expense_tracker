@@ -1,7 +1,8 @@
 == README
 
 This web application is deployed to Heroku. 
-Here's the link for master production: https://protected-caverns-37888.herokuapp.com/
+
+Here's the link for master production: https://protected-caverns-37888.herokuapp.com
 
 Once you launch the web application, user will see the main page. 
 There are two types of users in this application, regular user and amdin user.
