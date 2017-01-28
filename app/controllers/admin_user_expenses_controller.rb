@@ -1,7 +1,6 @@
 class AdminUserExpensesController < ApplicationController
   def index
   	@admin_user_expenses = current_admin_user.admin_user_expenses
-
   end
 
   def new 

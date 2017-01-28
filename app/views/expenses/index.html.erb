@@ -20,7 +20,7 @@
       <td><%= number_to_currency(expense.amount) %></td>
       <td><%= expense.created_at.strftime("%m/%d/%y %H:%M") %></td>
       <td><%= button_to 'Edit', edit_expense_path(expense), :method => :get %></td>
-	  <td><%= button_to 'Delete', expense_path(expense), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= button_to 'Delete', expense_path(expense), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
 	
   <% end %>

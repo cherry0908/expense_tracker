@@ -11,8 +11,8 @@
       <td><%= admin_user_expense.description %></td>
       <td><%= number_to_currency(admin_user_expense.amount) %></td>
       <td><%= admin_user_expense.created_at.strftime("%m/%d/%y %H:%M") %></td>
-      <td><%= button_to 'Edit', edit_expense_path(admin_user_expense), :method => :get %></td>
-	  <td><%= button_to 'Delete', expense_path(admin_user_expense), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= button_to 'Edit', edit_admin_user_expense_path(admin_user_expense), :method => :get %></td>
+      <td><%= button_to 'Delete', admin_user_expense_path(admin_user_expense), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
 	
   <% end %>

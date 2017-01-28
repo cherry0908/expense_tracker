@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   get 'admin_user_reports', to: 'admin_user_reports#index'
   get 'reports', to: 'reports#index'
-  get 'admin_user_expenses/other_expenses'
+  get 'other_expenses', to: 'admin_user_expenses#other_expenses'
 
 end

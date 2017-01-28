@@ -1,6 +1,6 @@
 <% User.all.each do |user| %>
   <p>User Account: <%= user.email %> </p>
-  <p>Expenses: </p>
+  <p>Expense Records: </p>
   <table>
     <% user.expenses.each do |expense| %>
       <tr>

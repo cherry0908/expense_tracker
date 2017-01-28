@@ -7,7 +7,7 @@
 	<h1>Hello, Admin User!</h1>
 	<%= link_to 'Go to expenses', admin_user_expenses_path %></li></br>
 	<%= link_to 'Go to report', admin_user_reports_path %></li></br>
-	<%= link_to 'Check expenses of other users', admin_user_expenses_other_expenses_path %></li></br>
+	<%= link_to 'Check expenses of other users', other_expenses_path %></li></br>
 	<%= link_to 'Log Out', destroy_admin_user_session_path, method: :delete, :class => "sign_out_link" %></li>
  <% else %>
  	<h1>Welcome!</h1>
